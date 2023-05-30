@@ -162,6 +162,7 @@ namespace KursPogud
         {
             List<String[]> dishes = new List<String[]>();
 
+            
 
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             connection.Open();
@@ -193,7 +194,8 @@ namespace KursPogud
                                     s[4] = reader1.GetInt32(4).ToString();
                                     s[5] = reader1.GetInt32(5).ToString();
                                     s[6] = reader1.GetInt32(6).ToString();
-                                    
+                                   
+
                                 }
                             }
                         }

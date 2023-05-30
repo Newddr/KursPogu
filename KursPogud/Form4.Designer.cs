@@ -160,6 +160,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form4";
             this.Text = "Выбор роли";
+            this.Load += new System.EventHandler(this.Form4_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
