@@ -36,7 +36,7 @@ namespace KursPogud
             foreach (String[] order in orders)
             {
                 
-                List<String[]> dishes = logic.GetDishesFromOrder(Convert.ToInt32(order[0]));
+                List<String[]> dishes = logic.GetDishesFromOrder(Convert.ToInt32(order[0]),"AND status <2");
                 foreach (String[] s in dishes)
                 {
                     
@@ -89,8 +89,11 @@ namespace KursPogud
                             
                             logic.ChangeStatusDishes(Convert.ToInt32(orderId.Text), Convert.ToInt32(s[0]));
                             logic.ChangeStatusOrder(Convert.ToInt32(order[0]), 1);
+                            if(logic.CheckIfOrderREady(Convert.ToInt32(orderId.Text))) logic.ChangeStatusOrder(Convert.ToInt32(order[0]), 2);
                             LoadDishes();
-                           
+                            
+
+
 
                         }
                         else check.Checked = true;

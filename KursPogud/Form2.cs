@@ -80,7 +80,7 @@ namespace KursPogud
             panel2.Controls.Clear();
             idOrder = id;
             Logic logic = new Logic();
-            List<String[]> dishes = logic.GetDishesFromOrder(id);
+            List<String[]> dishes = logic.GetDishesFromOrder(id,"");
             foreach (String[] s in dishes)
             {
                 System.Windows.Forms.CheckBox check = new System.Windows.Forms.CheckBox();

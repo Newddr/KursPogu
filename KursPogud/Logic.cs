@@ -158,7 +158,7 @@ namespace KursPogud
             connection.Close();
             return orders;
         }
-        public List<String[]> GetDishesFromOrder(int id)
+        public List<String[]> GetDishesFromOrder(int id, string filter)
         {
             List<String[]> dishes = new List<String[]>();
 
@@ -166,7 +166,7 @@ namespace KursPogud
 
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             connection.Open();
-            string sql = $"SELECT * FROM status_dishes where id_order={id} AND status<2";
+            string sql = $"SELECT * FROM status_dishes where id_order={id} {filter}";
             // Создание объекта SQLiteCommand
             using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
@@ -211,6 +211,25 @@ namespace KursPogud
             connection.Close();
             return dishes;
         }
+        public bool CheckIfOrderREady(int id)
+        {
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
+            connection.Open();
+            string sql = $"SELECT * FROM status_dishes where id_order={id} AND status<2";
+            using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+            {
+                // Выполнение запроса
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return false;
+                    }
+                }
+            }
+            connection.Close();
+            return true;
+         }
         public void ChangeStatusOrder(int id,int status)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
