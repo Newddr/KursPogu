@@ -27,7 +27,7 @@ namespace KursPogud
         
         private void LoadDishes()
         {
-           
+           panel2.Controls.Clear();
             // label2.Text = "Подробности заказа № " +id;
             CheckBoxes.Clear();
            
@@ -89,6 +89,7 @@ namespace KursPogud
                             
                             logic.ChangeStatusDishes(Convert.ToInt32(orderId.Text), Convert.ToInt32(s[0]));
                             logic.ChangeStatusOrder(Convert.ToInt32(order[0]), 1);
+                            LoadDishes();
                            
 
                         }

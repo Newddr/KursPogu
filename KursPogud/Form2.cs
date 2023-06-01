@@ -131,8 +131,8 @@ namespace KursPogud
                     {
                         if (status.Text == "Готов")
                         {
-                            ChangeStatusDishes(Convert.ToInt32(s[0]), i);
-                            i++;
+                            ChangeStatusDishes(Convert.ToInt32(s[0]) );
+                            
                         }
                         else
                         {
@@ -157,10 +157,10 @@ namespace KursPogud
                 panel2.Controls.Add(element);
             }
         }
-        private void ChangeStatusDishes(int id, int counter)
+        private void ChangeStatusDishes(int id)
         {
             Logic logic = new Logic();
-            logic.ChangeStatusDishesEaten(idOrder, id,counter);
+            logic.ChangeStatusDishesEaten(idOrder, id);
         }
 
         private void label2_Click(object sender, EventArgs e)

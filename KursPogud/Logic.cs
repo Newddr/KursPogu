@@ -166,7 +166,7 @@ namespace KursPogud
 
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             connection.Open();
-            string sql = $"SELECT * FROM status_dishes where id_order={id}";
+            string sql = $"SELECT * FROM status_dishes where id_order={id} AND status<2";
             // Создание объекта SQLiteCommand
             using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
@@ -237,11 +237,11 @@ namespace KursPogud
             connection.Close();
 
         }
-        public void ChangeStatusDishesEaten(int idOrder, int idDish, int counter)
+        public void ChangeStatusDishesEaten(int idOrder, int idDish)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             connection.Open();
-            string sql = $"UPDATE status_dishes SET status = 3 WHERE id_dishes ={idDish} AND id_order={idOrder} AND counter ={counter}";
+            string sql = $"UPDATE status_dishes SET status = 3 WHERE id_dishes ={idDish} AND id_order={idOrder} AND status<3 LIMIT 1";
             // Создание объекта SQLiteCommand
             using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
